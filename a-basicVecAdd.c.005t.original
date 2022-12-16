@@ -1,0 +1,90 @@
+
+;; Function __bswap_16 (null)
+;; enabled by -tree-original
+
+
+{
+  return (__uint16_t) __builtin_bswap16 ((int) __bsx);
+}
+
+
+;; Function __bswap_32 (null)
+;; enabled by -tree-original
+
+
+{
+  return (__uint32_t) __builtin_bswap32 (__bsx);
+}
+
+
+;; Function __bswap_64 (null)
+;; enabled by -tree-original
+
+
+{
+  return (__uint64_t) __builtin_bswap64 (__bsx);
+}
+
+
+;; Function __uint16_identity (null)
+;; enabled by -tree-original
+
+
+{
+  return __x;
+}
+
+
+;; Function __uint32_identity (null)
+;; enabled by -tree-original
+
+
+{
+  return __x;
+}
+
+
+;; Function __uint64_identity (null)
+;; enabled by -tree-original
+
+
+{
+  return __x;
+}
+
+
+;; Function vecAdd (null)
+;; enabled by -tree-original
+
+
+{
+  {
+    size_t i = 0;
+
+        size_t i = 0;
+    goto <D.2539>;
+    <D.2538>:;
+    *(C + (sizetype) (i * 4)) = *(A + (sizetype) (i * 4)) + *(B + (sizetype) (i * 4));
+    i++ ;
+    <D.2539>:;
+    if (i < SIZE) goto <D.2538>; else goto <D.2536>;
+    <D.2536>:;
+  }
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int * A;
+  int * B;
+  int * C;
+
+    int * A;
+    int * B;
+    int * C;
+}
+return 0;
+

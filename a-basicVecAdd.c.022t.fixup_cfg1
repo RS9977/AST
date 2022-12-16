@@ -1,0 +1,56 @@
+
+;; Function vecAdd (vecAdd, funcdef_no=6, decl_uid=2533, cgraph_uid=7, symbol_order=6)
+
+void vecAdd (size_t SIZE, int * A, int * B, int * C)
+{
+  size_t i;
+
+  <bb 2> :
+  i = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = i * 4;
+  _2 = A + _1;
+  _3 = *_2;
+  _4 = i * 4;
+  _5 = B + _4;
+  _6 = *_5;
+  _7 = i * 4;
+  _8 = C + _7;
+  _9 = _3 + _6;
+  *_8 = _9;
+  i = i + 1;
+
+  <bb 4> :
+  if (i < SIZE)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=7, decl_uid=2540, cgraph_uid=8, symbol_order=7)
+
+int main ()
+{
+  int * C;
+  int * B;
+  int * A;
+  int D.2546;
+
+  <bb 2> :
+  D.2546 = 0;
+
+  <bb 3> :
+<L0>:
+  return D.2546;
+
+}
+
+

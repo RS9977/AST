@@ -1,0 +1,66 @@
+
+;; Function vecAdd (_Z6vecAddmPiS_S_, funcdef_no=15, decl_uid=3300, cgraph_uid=16, symbol_order=15)
+
+Released 0 names, 0.00%, removed 0 holes
+void vecAdd (size_t SIZE, int * A, int * B, int * C)
+{
+  size_t i;
+  long unsigned int _1;
+  int * _2;
+  int _3;
+  long unsigned int _4;
+  int * _5;
+  int _6;
+  long unsigned int _7;
+  int * _8;
+  int _9;
+
+  <bb 2> :
+  i_12 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = i_10 * 4;
+  _2 = A_15(D) + _1;
+  _3 = *_2;
+  _4 = i_10 * 4;
+  _5 = B_16(D) + _4;
+  _6 = *_5;
+  _7 = i_10 * 4;
+  _8 = C_17(D) + _7;
+  _9 = _3 + _6;
+  *_8 = _9;
+  i_19 = i_10 + 1;
+
+  <bb 4> :
+  # i_10 = PHI <i_12(2), i_19(3)>
+  if (i_10 < SIZE_14(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function main (main, funcdef_no=16, decl_uid=3307, cgraph_uid=17, symbol_order=16)
+
+Released 0 names, 0.00%, removed 0 holes
+int main ()
+{
+  int D.3309;
+  int _1;
+
+  <bb 2> :
+  _1 = 1;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+

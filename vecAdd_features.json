@@ -1,0 +1,63 @@
+{
+    "File Name": "sicVecAdd",
+    "Function Name": "vecAdd",
+    "Notes": "",
+    "Function Variables": [
+        {
+            "Name": "SIZE",
+            "Argument": 0,
+            "Type": "size_t",
+            "pointer": 0,
+            "decalaration_line_num": 4,
+            "read_only": false
+        },
+        {
+            "Name": "A",
+            "Argument": 1,
+            "Type": "int*",
+            "pointer": 1,
+            "decalaration_line_num": 4,
+            "read_only": true
+        },
+        {
+            "Name": "B",
+            "Argument": 2,
+            "Type": "int*",
+            "pointer": 1,
+            "decalaration_line_num": 5,
+            "read_only": true
+        },
+        {
+            "Name": "C",
+            "Argument": 3,
+            "Type": "int*",
+            "pointer": 1,
+            "decalaration_line_num": 6,
+            "read_only": false
+        }
+    ],
+    "Loops": [
+        {
+            "ID": 1,
+            "Nested Level": 0,
+            "Immediate_Outer_Loop_ID": 0,
+            "loop_iterator": {
+                "Type": "size_t",
+                "Name": "i",
+                "declaration_line_num": 9,
+                "read_only": 0
+            }
+        }
+    ],
+    "insertion_point": {
+        "Global": 3,
+        "Function": 10,
+        "Loops": [
+            {
+                "Loop ID": 0,
+                "Line": 9
+            }
+        ],
+        "VarSpecifier": ""
+    }
+}

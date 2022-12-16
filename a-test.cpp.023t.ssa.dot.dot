@@ -1,0 +1,264 @@
+digraph "a-test.cpp.023t.ssa" {
+	graph [bb="0,0,1412,680",
+		overlap=false
+	];
+	node [label="\N"];
+	subgraph cluster_main {
+		graph [bb="8,8,418,672",
+			color=black,
+			label="main ()",
+			lheight=0.21,
+			lp="213,660.5",
+			lwidth=0.71,
+			style=dashed
+		];
+		subgraph cluster_1731_1 {
+			graph [bb="122,186,410,469",
+				color=darkgreen,
+				fillcolor=grey88,
+				label="loop 1",
+				labeljust=l,
+				lheight=0.21,
+				lp="152,457.5",
+				lwidth=0.61,
+				penwidth=2,
+				style=filled
+			];
+			fn_1731_basic_block_4	[fillcolor=lightgrey,
+				height=1.9167,
+				label="{\<bb\ 4\>:\l|#\ cnt_1\ =\ PHI\ \<cnt_3(2),\ cnt_7(3)\>\l|#\ i_2\ =\ PHI\ \<i_4(2),\ i_8(3)\>\l|if\ (i_2\ \<=\ 9)\l\ \ goto\ \<bb\ \
+3\>;\ [INV]\lelse\l\ \ goto\ \<bb\ 5\>;\ [INV]\l}",
+				pos="266,369",
+				rects="130,414.5,402,437.5 130,391.5,402,414.5 130,368.5,402,391.5 130,300.5,402,368.5",
+				shape=record,
+				style=filled,
+				width=3.7778];
+			fn_1731_basic_block_3	[fillcolor=lightgrey,
+				height=0.97222,
+				label="{\<bb\ 3\>:\l|cnt_7\ =\ cnt_1\ +\ 1;\l|i_8\ =\ i_2\ +\ 1;\l}",
+				pos="266,229",
+				rects="191.5,240.5,340.5,263.5 191.5,217.5,340.5,240.5 191.5,194.5,340.5,217.5",
+				shape=record,
+				style=filled,
+				width=2.0694];
+			fn_1731_basic_block_4:s -> fn_1731_basic_block_3:n	[color=black,
+				constraint=true,
+				pos="e,266,264 266,300 266,288 266,282.75 266,274.12",
+				style="solid,bold",
+				weight=10];
+			fn_1731_basic_block_3:s -> fn_1731_basic_block_4:n	[color=blue,
+				constraint=false,
+				pos="e,266,439 266,193 266,176.44 326.21,185.64 340.5,194 387.51,221.5 387.85,247.4 402,300 409.97,329.61 423.6,416.24 402,438 393.02,\
+447.05 302.37,452.3 274.27,444.64",
+				style="dotted,bold",
+				weight=10];
+		}
+		fn_1731_basic_block_5	[fillcolor=lightgrey,
+			height=0.65278,
+			label="{\<bb\ 5\>:\l|_5\ =\ 0;\l}",
+			pos="75,229",
+			rects="36.5,229,113.5,252 36.5,206,113.5,229",
+			shape=record,
+			style=filled,
+			width=1.0694];
+		fn_1731_basic_block_4:s -> fn_1731_basic_block_5:n	[color=black,
+			constraint=true,
+			pos="e,75,253 266,300 266,216.34 91.061,329.83 76.028,263.11",
+			style="solid,bold",
+			weight=10];
+		fn_1731_basic_block_0	[fillcolor=white,
+			height=0.5,
+			label=ENTRY,
+			pos="266,623",
+			shape=Mdiamond,
+			style=filled,
+			width=1.7107];
+		fn_1731_basic_block_1	[fillcolor=white,
+			height=0.5,
+			label=EXIT,
+			pos="80,34",
+			shape=Mdiamond,
+			style=filled,
+			width=1.3021];
+		fn_1731_basic_block_0:s -> fn_1731_basic_block_1:n	[constraint=true,
+			pos="e,80,52 266,605 266,563.56 213.22,593.76 180,569 88.332,500.68 17,484.33 17,370 17,370 17,370 17,228 17,165.62 -4.143,142.05 27,\
+88 39.106,66.989 69.027,76.306 77.644,61.951",
+			style=invis];
+		fn_1731_basic_block_2	[fillcolor=lightgrey,
+			height=1.1806,
+			label="{\<bb\ 2\>:\l|cnt_3\ =\ 0;\l|i_4\ =\ 0;\lgoto\ \<bb\ 4\>;\ [INV]\l}",
+			pos="266,523",
+			rects="188.5,542,343.5,565 188.5,519,343.5,542 188.5,481,343.5,519",
+			shape=record,
+			style=filled,
+			width=2.1528];
+		fn_1731_basic_block_0:s -> fn_1731_basic_block_2:n	[color=blue,
+			constraint=true,
+			pos="e,266,566 266,605 266,591.59 266,585.96 266,576.08",
+			style="solid,bold",
+			weight=100];
+		fn_1731_basic_block_2:s -> fn_1731_basic_block_4:n	[color=blue,
+			constraint=true,
+			pos="e,266,439 266,480 266,465.76 266,459.87 266,449.28",
+			style="solid,bold",
+			weight=100];
+		fn_1731_basic_block_6	[fillcolor=lightgrey,
+			height=0.97222,
+			label="{\<bb\ 6\>:\l|\<L3\>:\l|return\ _5;\l}",
+			pos="80,123",
+			rects="36.5,134.5,123.5,157.5 36.5,111.5,123.5,134.5 36.5,88.5,123.5,111.5",
+			shape=record,
+			style=filled,
+			width=1.2083];
+		fn_1731_basic_block_5:s -> fn_1731_basic_block_6:n	[color=blue,
+			constraint=true,
+			pos="e,80,158 75,205 75,187.93 78.301,181.44 79.539,168.34",
+			style="solid,bold",
+			weight=100];
+		fn_1731_basic_block_6:s -> fn_1731_basic_block_1:n	[color=black,
+			constraint=true,
+			pos="e,80,52 80,88 80,76 80,70.75 80,62.125",
+			style="solid,bold",
+			weight=10];
+	}
+	subgraph cluster___static_initialization_and_destruction_0 {
+		graph [bb="426,8,974,672",
+			color=black,
+			label="__static_initialization_and_destruction_0 ()",
+			lheight=0.21,
+			lp="700,660.5",
+			lwidth=4.19,
+			style=dashed
+		];
+		fn_2226_basic_block_0	[fillcolor=white,
+			height=0.5,
+			label=ENTRY,
+			pos="834,623",
+			shape=Mdiamond,
+			style=filled,
+			width=1.7107];
+		fn_2226_basic_block_1	[fillcolor=white,
+			height=0.5,
+			label=EXIT,
+			pos="690,34",
+			shape=Mdiamond,
+			style=filled,
+			width=1.3021];
+		fn_2226_basic_block_0:s -> fn_2226_basic_block_1:n	[constraint=true,
+			pos="e,690,52 834,605 834,551.44 767.05,592.65 719,569 580.71,500.95 435,524.12 435,370 435,370 435,370 435,228 435,208.81 433.36,201.25 \
+445,186 453.46,174.92 644.48,88.109 683.19,59.339",
+			style=invis];
+		fn_2226_basic_block_2	[fillcolor=lightgrey,
+			height=1.2778,
+			label="{\<bb\ 2\>:\l|if\ (__initialize_p_2(D)\ ==\ 1)\l\ \ goto\ \<bb\ 3\>;\ [INV]\lelse\l\ \ goto\ \<bb\ 5\>;\ [INV]\l}",
+			pos="834,523",
+			rects="728,545.5,940,568.5 728,477.5,940,545.5",
+			shape=record,
+			style=filled,
+			width=2.9444];
+		fn_2226_basic_block_0:s -> fn_2226_basic_block_2:n	[color=blue,
+			constraint=true,
+			pos="e,834,569 834,605 834,593 834,587.75 834,579.12",
+			style="solid,bold",
+			weight=100];
+		fn_2226_basic_block_3	[fillcolor=lightgrey,
+			height=1.2778,
+			label="{\<bb\ 3\>:\l|if\ (__priority_4(D)\ ==\ 65535)\l\ \ goto\ \<bb\ 4\>;\ [INV]\lelse\l\ \ goto\ \<bb\ 5\>;\ [INV]\l}",
+			pos="834,369",
+			rects="722,391.5,946,414.5 722,323.5,946,391.5",
+			shape=record,
+			style=filled,
+			width=3.1111];
+		fn_2226_basic_block_2:s -> fn_2226_basic_block_3:n	[color=black,
+			constraint=true,
+			pos="e,834,416 834,477 834,453.6 834,445.34 834,426.08",
+			style="solid,bold",
+			weight=10];
+		fn_2226_basic_block_5	[fillcolor=lightgrey,
+			height=0.65278,
+			label="{\<bb\ 5\>:\l|return;\l}",
+			pos="690,123",
+			rects="651.5,123,728.5,146 651.5,100,728.5,123",
+			shape=record,
+			style=filled,
+			width=1.0694];
+		fn_2226_basic_block_2:s -> fn_2226_basic_block_5:n	[color=black,
+			constraint=true,
+			pos="e,690,147 834,477 834,463.53 945.79,478.84 955,469 976.5,446.03 968.33,209.12 947,186 910.43,146.36 718.14,197.09 692.77,157",
+			style="solid,bold",
+			weight=10];
+		fn_2226_basic_block_4	[fillcolor=lightgrey,
+			height=0.97222,
+			label="{\<bb\ 4\>:\l|std::ios_base::Init::Init\ (&__ioinit);\l|__cxxabiv1::__cxa_atexit\ (__dt_comp\ ,\ &__ioinit,\ &__dso_handle);\l}",
+			pos="690,229",
+			rects="454,240.5,926,263.5 454,217.5,926,240.5 454,194.5,926,217.5",
+			shape=record,
+			style=filled,
+			width=6.5556];
+		fn_2226_basic_block_3:s -> fn_2226_basic_block_4:n	[color=black,
+			constraint=true,
+			pos="e,690,264 834,322 834,256.78 705.32,324.69 691.24,274.03",
+			style="solid,bold",
+			weight=10];
+		fn_2226_basic_block_3:s -> fn_2226_basic_block_5:n	[color=black,
+			constraint=true,
+			pos="e,690,147 834,322 834,270.24 909.07,308.8 935,264 952.37,234 957.5,212.37 935,186 901.73,147.01 718.56,194.46 692.97,157.02",
+			style="solid,bold",
+			weight=10];
+		fn_2226_basic_block_4:s -> fn_2226_basic_block_5:n	[color=blue,
+			constraint=true,
+			pos="e,690,147 690,193 690,176.39 690,169.9 690,157.08",
+			style="solid,bold",
+			weight=100];
+		fn_2226_basic_block_5:s -> fn_2226_basic_block_1:n	[color=black,
+			constraint=true,
+			pos="e,690,52 690,99 690,82.028 690,75.398 690,62.304",
+			style="solid,bold",
+			weight=10];
+	}
+	subgraph cluster__GLOBAL__sub_I_main {
+		graph [bb="982,343,1404,672",
+			color=black,
+			label="_GLOBAL__sub_I_main ()",
+			lheight=0.21,
+			lp="1193,660.5",
+			lwidth=2.44,
+			style=dashed
+		];
+		fn_2227_basic_block_0	[fillcolor=white,
+			height=0.5,
+			label=ENTRY,
+			pos="1203,623",
+			shape=Mdiamond,
+			style=filled,
+			width=1.7107];
+		fn_2227_basic_block_1	[fillcolor=white,
+			height=0.5,
+			label=EXIT,
+			pos="1203,369",
+			shape=Mdiamond,
+			style=filled,
+			width=1.3021];
+		fn_2227_basic_block_0:s -> fn_2227_basic_block_1:n	[constraint=true,
+			pos="e,1203,388 1203,605 1203,513.81 1059.6,638.91 1001,569 974.75,537.65 978.66,511.25 1001,477 1052.6,397.87 1192.1,479.57 1202.4,398.16",
+			style=invis];
+		fn_2227_basic_block_2	[fillcolor=lightgrey,
+			height=0.97222,
+			label="{\<bb\ 2\>:\l|__static_initialization_and_destruction_0\ (1,\ 65535);\l|return;\l}",
+			pos="1203,523",
+			rects="1010,534.5,1396,557.5 1010,511.5,1396,534.5 1010,488.5,1396,511.5",
+			shape=record,
+			style=filled,
+			width=5.3611];
+		fn_2227_basic_block_0:s -> fn_2227_basic_block_2:n	[color=blue,
+			constraint=true,
+			pos="e,1203,559 1203,605 1203,588.39 1203,581.9 1203,569.08",
+			style="solid,bold",
+			weight=100];
+		fn_2227_basic_block_2:s -> fn_2227_basic_block_1:n	[color=black,
+			constraint=true,
+			pos="e,1203,388 1203,487 1203,446.61 1203,434.03 1203,398.2",
+			style="solid,bold",
+			weight=10];
+	}
+}

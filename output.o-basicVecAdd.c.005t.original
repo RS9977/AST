@@ -1,0 +1,143 @@
+
+;; Function __uint16_t __bswap_16(__uint16_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __builtin_bswap16 ((int) __bsx);
+
+
+;; Function __uint32_t __bswap_32(__uint32_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __builtin_bswap32 (__bsx);
+
+
+;; Function __uint64_t __bswap_64(__uint64_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __builtin_bswap64 (__bsx);
+
+
+;; Function __uint16_t __uint16_identity(__uint16_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __x;
+
+
+;; Function __uint32_t __uint32_identity(__uint32_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __x;
+
+
+;; Function __uint64_t __uint64_identity(__uint64_t) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __x;
+
+
+;; Function long int std::abs(long int) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__i>;
+
+
+;; Function long long int std::abs(long long int) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__x>;
+
+
+;; Function constexpr double std::abs(double) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__x>;
+
+
+;; Function constexpr float std::abs(float) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__x>;
+
+
+;; Function constexpr long double std::abs(long double) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__x>;
+
+
+;; Function constexpr __int128 std::abs(__int128) (null)
+;; enabled by -tree-original
+
+
+return <retval> = ABS_EXPR <__x>;
+
+
+;; Function constexpr __float128 std::abs(__float128) (null)
+;; enabled by -tree-original
+
+
+return <retval> = __x < 0.0 ? -NON_LVALUE_EXPR <__x> : __x;
+
+
+;; Function ldiv_t std::div(long int, long int) (null)
+;; enabled by -tree-original
+
+
+<<cleanup_point return <retval> = TARGET_EXPR <D.3196, ldiv (__i, __j)>>>;
+
+
+;; Function lldiv_t __gnu_cxx::div(long long int, long long int) (null)
+;; enabled by -tree-original
+
+
+{
+  struct lldiv_t __q;
+
+    struct lldiv_t __q;
+  <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (__q.quot = __n / __d) >>>>>;
+  <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (__q.rem = __n % __d) >>>>>;
+  <<cleanup_point return <retval> = TARGET_EXPR <D.3247, *(struct lldiv_t &) &__q>>>;
+}
+
+
+;; Function void vecAdd(size_t, int*, int*, int*) (null)
+;; enabled by -tree-original
+
+
+{
+  {
+    size_t i = 0;
+
+    <<cleanup_point     size_t i = 0;>>;
+    goto <D.3306>;
+    <D.3305>:;
+    <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (*(C + (sizetype) (i * 4)) = *(A + (sizetype) (i * 4)) + *(B + (sizetype) (i * 4))) >>>>>;
+    <<cleanup_point (void) i++ >>;
+    <D.3306>:;
+    if (i < SIZE) goto <D.3305>; else goto <D.3303>;
+    <D.3303>:;
+  }
+}
+
+
+;; Function int main() (null)
+;; enabled by -tree-original
+
+
+return <retval> = 1;
+return <retval> = 0;
+

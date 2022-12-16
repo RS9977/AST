@@ -1,0 +1,29 @@
+{
+	"basicVecAdd": {
+		"File Name": "basicVecAdd",
+		"Function Name": "vecAdd",
+		"template_chars":{
+		"@1": ["size_t", "Name"],
+		"@2": ["int*", "Name"],
+		"@3": ["int*", "Type"],
+		"@4": ["size_block", "Name"]
+				},
+		"Notes": "",
+		"Function Variables": [
+			{"Name": "SIZE", "Argument": 1,  "Type": "size_t", "pointer": 0, "decalaration_line_num": 4, "read_only": 1},
+			{"Name": "A", "Argument": 2, "Type": "int*", "pointer": 1, "decalaration_line_num": 5, "read_only": 1},
+			{"Name": "B", "Argument": 3,  "Type": "int*", "pointer": 1, "decalaration_line_num": 6, "read_only": 1},
+			{"Name": "C", "Argument": 4,  "Type": "int*", "pointer": 1, "decalaration_line_num": 7, "read_only": 0}
+		],
+		"Loops": [
+			{"ID": 1, "Nested Level": 0, "Immediate Outer Loop ID": 0, "loop_iterator": {"Name": "i", "Type": "size_t", "declaration_line_num": 10, "read_only": 0}}
+		],
+		"Insertion Points": {
+			"Loops": [{"Loop ID": 1, "Line":10 }],
+			"Global": {"Line": 2},
+			"Function": {"Line": 9},
+			"VarSpecifier": {}
+		},
+		"DataSet":"basicVecAdd.csv"
+		}
+}

@@ -1,0 +1,29 @@
+{
+    "File Name": "basicVecAdd",
+    "Function Name": "VecAdd",
+    "Notes": "",
+    "Function Variables": [],
+    "Loops": [
+        {
+            "ID": 1,
+            "Nested Level": 0,
+            "Immediate_Outer_Loop_ID": 0,
+            "loop_iterator": {
+                "Type": "size_t",
+                "Name": "i",
+                "declaration_line_num": 9,
+                "read_only": 0
+            }
+        }
+    ],
+    "insertion_point": {
+        "Function": 10,
+        "Loops": [
+            {
+                "Loop ID": 0,
+                "Line": 9
+            }
+        ],
+        "VarSpecifier": ""
+    }
+}

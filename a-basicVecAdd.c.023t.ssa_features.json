@@ -1,0 +1,23 @@
+{
+    "File Name": "FOO",
+    "Function Name": "a-basicVecAdd.c.023t.ssa",
+    "template_chars": {
+        "@0": [
+            "SIZE",
+            "size_t"
+        ],
+        "@1": [
+            "A",
+            "int*"
+        ],
+        "@2": [
+            "B",
+            "int*"
+        ],
+        "@3": [
+            "C",
+            "int*"
+        ]
+    },
+    "Notes": ""
+}
