@@ -1,6 +1,7 @@
 # Import library
 #import numpy as np
 import json
+import os
 
 #Functions
 
@@ -21,21 +22,33 @@ def check_var(var, word):
                 return False
         return True
 
-# Reading file
-filename = 'a-basicVecAdd.c.023t.ssa' 
-f = open(filename, 'r')
-lines = []
-for line in f:
-    lines.append(line)
-f.close()
 
 # Reading original file
-filename = 'basicVecAdd.c' 
-f = open(filename, 'r')
+print('Pleas type the name of file (The C++ program)')
+filename = input() 
 lines_original = []
-for line in f:
-    lines_original.append(line)
-f.close()
+try:
+    f = open(filename, 'r')
+    for line in f:
+        lines_original.append(line)
+    f.close()
+except:
+    print('There is no such file')
+
+
+# Reading the AST file
+lines = []
+try:
+    os.system('g++ ' + filename + ' -fdump-tree-all-graph ' + '-o out.o')
+    AST_filename = 'a-' + filename + '.023t.ssa' 
+    f = open(AST_filename, 'r')
+    for line in f:
+        lines.append(line)
+    f.close()
+except:
+    print('You have not dumped the corresponded AST and the program cannot do it either')
+
+
 
 # Find nodes that have jumps/branches
 current_bb     = 0
@@ -211,17 +224,92 @@ for key in args.keys():
     json_vars.append(var_dict)
             
 
+j = 0
+nested_level            = 0
+loop_ID_cnt             = 0
+Immediate_Outer_Loop_ID = 0
 
+Loops_list_dict = list()
+
+insertion_point = dict()
+
+functions_var = ['+', '-', '*', '/']
+
+loops_lines = []
+
+#Parsing the Actual code line by line so that extractin features and corresponding lines
 for line in lines_original:
-    if()
+    temp_dict = dict()
+    temp_loop_iter = dict()
+    j += 1
+    for_main_line  = 0
+    for_par        = 0
+    iter_var       = 0
+    iter_var_check = 0
+    for word in line.split():
+        #Here I assume that the global line is the line which is the function is defined
+        if function_name in word:
+            insertion_point['Global'] = j
+
+        #Here I assume that the function line is where an mathematical operation is occured        
+        for op in functions_var:
+            if op in word:
+                insertion_point['Function'] = j   
+
+        #Looking for loops     
+        if check_var('for', word):
+            loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
+            loop_ID_cnt   += 1
+            for_main_line  = 1
+            temp_dict['ID']                      = loop_ID_cnt
+            temp_dict['Nested Level']            = nested_level
+            temp_dict['Immediate_Outer_Loop_ID'] = Immediate_Outer_Loop_ID
+            Immediate_Outer_Loop_ID = loop_ID_cnt
+        if check_var('while', word):
+            loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
+            loop_ID_cnt   += 1
+            temp_dict['ID']                      = loop_ID_cnt
+            temp_dict['Nested Level']            = nested_level
+            temp_dict['Immediate_Outer_Loop_ID'] = Immediate_Outer_Loop_ID
+            Immediate_Outer_Loop_ID = loop_ID_cnt
+            temp_dict['loop_iterator'] = {}
+
+        if for_main_line:
+            if '(' in word:
+                for_par = 1
+            if ')' in word:
+                for_par       = 0
+                for_main_line = 0
+                Loops_list_dict.append(temp_dict)
+            if iter_var:
+                iter_var       = 0
+                iter_var_check = 1
+                temp_loop_iter['Name']                 = word
+                temp_loop_iter['declaration_line_num'] = j
+                temp_loop_iter['read_only']            = 0
+                temp_dict['loop_iterator'] = temp_loop_iter
+            if not (iter_var_check or iter_var):
+                for var in cpp_var:
+                    if check_var(var, word):
+                        iter_var = 1
+                        temp_loop_iter['Type'] = var
+                        break
+
+insertion_point['Loops'] = loops_lines
+
+#I don't know what exactly is VarSpecifier
+insertion_point['VarSpecifier'] = ''
+            
             
         
 final_json_dict = dict({
                        'File Name': filename.split(sep='.')[0][2:],
                        'Function Name': function_name,
-                       'template_chars': json_args,
+                      # 'template_chars': json_args,
                        'Notes': '',
-                       "Function Variables": json_vars
+                       "Function Variables": json_vars,
+                       'Loops' : Loops_list_dict,
+                       'insertion_point': insertion_point
                  })
 
 final_jason = json.dumps(final_json_dict, indent=4)
