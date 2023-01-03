@@ -17,7 +17,7 @@
             "Type": "int*",
             "pointer": 1,
             "decalaration_line_num": 4,
-            "read_only": true
+            "read_only": false
         },
         {
             "Name": "B",
@@ -44,20 +44,73 @@
             "loop_iterator": {
                 "Type": "size_t",
                 "Name": "i",
+                "declaration_line_num": 8,
+                "read_only": 0
+            }
+        },
+        {
+            "ID": 2,
+            "Nested Level": 1,
+            "Immediate_Outer_Loop_ID": 1,
+            "loop_iterator": {
+                "Type": "size_t",
+                "Name": "j",
                 "declaration_line_num": 9,
+                "read_only": 0
+            }
+        },
+        {
+            "ID": 3,
+            "Nested Level": 1,
+            "Immediate_Outer_Loop_ID": 1,
+            "loop_iterator": {
+                "Type": "size_t",
+                "Name": "k",
+                "declaration_line_num": 16,
+                "read_only": 0
+            }
+        },
+        {
+            "ID": 4,
+            "Nested Level": 2,
+            "Immediate_Outer_Loop_ID": 3,
+            "loop_iterator": {
+                "Type": "size_t",
+                "Name": "m",
+                "declaration_line_num": 19,
                 "read_only": 0
             }
         }
     ],
     "insertion_point": {
         "Global": 3,
-        "Function": 10,
         "Loops": [
             {
                 "Loop ID": 0,
+                "Line": 8
+            },
+            {
+                "Loop ID": 1,
                 "Line": 9
+            },
+            {
+                "Loop ID": 2,
+                "Line": 16
+            },
+            {
+                "Loop ID": 3,
+                "Line": 19
             }
         ],
-        "VarSpecifier": ""
+        "VarSpecifier": "",
+        "Function": [
+            10,
+            14,
+            14,
+            17,
+            17,
+            20,
+            20
+        ]
     }
 }

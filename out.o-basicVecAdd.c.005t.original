@@ -122,14 +122,48 @@ return <retval> = __x < 0.0 ? -NON_LVALUE_EXPR <__x> : __x;
     size_t i = 0;
 
     <<cleanup_point     size_t i = 0;>>;
-    goto <D.3306>;
-    <D.3305>:;
-    <<cleanup_point <<< Unknown tree: expr_stmt
-  (void) (*(C + (sizetype) (i * 4)) = *(A + (sizetype) (i * 4)) + *(B + (sizetype) (i * 4))) >>>>>;
+    goto <D.3318>;
+    <D.3317>:;
+    {
+      {
+        size_t j = SIZE + 18446744073709551615;
+
+                size_t j = SIZE + 18446744073709551615;
+        <D.3310>:;
+        <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (*(C + (sizetype) (i * 4)) = *(A + (sizetype) (j * 4)) + *(B + (sizetype) (i * 4))) >>>>>;
+        <<cleanup_point (void) j-- >>;
+        goto <D.3310>;
+      }
+      <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (*(C + (sizetype) (i * 4)) = *(C + (sizetype) (i * 4)) + (*NON_LVALUE_EXPR <A> + *NON_LVALUE_EXPR <B>)) >>>>>;
+      {
+        size_t k = SIZE + 18446744073709551615;
+
+                size_t k = SIZE + 18446744073709551615;
+        <D.3316>:;
+        {
+          <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (*(C + (sizetype) (i * 4)) = *(C + (sizetype) (i * 4)) + (*(A + (sizetype) (k * 4)) + *(B + (sizetype) (i * 4)))) >>>>>;
+          {
+            size_t m = SIZE + 18446744073709551615;
+
+                        size_t m = SIZE + 18446744073709551615;
+            <D.3315>:;
+            <<cleanup_point <<< Unknown tree: expr_stmt
+  (void) (*(C + (sizetype) (i * 4)) = *(C + (sizetype) (i * 4)) + (*(A + (sizetype) (m * 4)) + *(B + (sizetype) (m * 4)))) >>>>>;
+            <<cleanup_point (void) m-- >>;
+            goto <D.3315>;
+          }
+        }
+        <<cleanup_point (void) k-- >>;
+        goto <D.3316>;
+      }
+    }
     <<cleanup_point (void) i++ >>;
+    <D.3318>:;
+    if (i < SIZE) goto <D.3317>; else goto <D.3306>;
     <D.3306>:;
-    if (i < SIZE) goto <D.3305>; else goto <D.3303>;
-    <D.3303>:;
   }
 }
 

@@ -228,7 +228,7 @@ j = 0
 nested_level            = 0
 loop_ID_cnt             = 0
 Immediate_Outer_Loop_ID = 0
-
+nesting_loops = []
 Loops_list_dict = list()
 
 insertion_point = dict()
@@ -237,50 +237,54 @@ functions_var = ['+', '-', '*', '/']
 
 loops_lines = []
 
+scope_look = 0
+par_cnt    = 0
+par_loop_dict = dict()
+insertion_function = []
+assignment_check = 0
+assignment_line  = 0
 #Parsing the Actual code line by line so that extractin features and corresponding lines
 for line in lines_original:
     temp_dict = dict()
     temp_loop_iter = dict()
     j += 1
-    for_main_line  = 0
-    for_par        = 0
-    iter_var       = 0
-    iter_var_check = 0
+    while_main_line  = 0
+    for_main_line    = 0
+    for_par          = 0
+    iter_var         = 0
+    iter_var_check   = 0
+    word_cnt         = 0
+    
     for word in line.split():
         #Here I assume that the global line is the line which is the function is defined
         if function_name in word:
             insertion_point['Global'] = j
 
-        #Here I assume that the function line is where an mathematical operation is occured        
-        for op in functions_var:
-            if op in word:
-                insertion_point['Function'] = j   
-
-        #Looking for loops     
+        #Looking for loops  
+        #Looking for (for) loops   
         if check_var('for', word):
             loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
-            loop_ID_cnt   += 1
-            for_main_line  = 1
-            temp_dict['ID']                      = loop_ID_cnt
-            temp_dict['Nested Level']            = nested_level
-            temp_dict['Immediate_Outer_Loop_ID'] = Immediate_Outer_Loop_ID
+            loop_ID_cnt    += 1
+            for_main_line   = 1
+            temp_dict['ID']                          = loop_ID_cnt
+            temp_dict['Nested Level']                = len(nesting_loops)
+            if len(nesting_loops)>0:
+                temp_dict['Immediate_Outer_Loop_ID'] = nesting_loops[-1]
+            else:
+                temp_dict['Immediate_Outer_Loop_ID'] = 0
             Immediate_Outer_Loop_ID = loop_ID_cnt
-        if check_var('while', word):
-            loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
-            loop_ID_cnt   += 1
-            temp_dict['ID']                      = loop_ID_cnt
-            temp_dict['Nested Level']            = nested_level
-            temp_dict['Immediate_Outer_Loop_ID'] = Immediate_Outer_Loop_ID
-            Immediate_Outer_Loop_ID = loop_ID_cnt
-            temp_dict['loop_iterator'] = {}
+            nesting_loops.append(loop_ID_cnt)
+            nested_level += 1
 
         if for_main_line:
             if '(' in word:
-                for_par = 1
+                for_par       = 1
             if ')' in word:
                 for_par       = 0
                 for_main_line = 0
                 Loops_list_dict.append(temp_dict)
+                scope_look = 1
+
             if iter_var:
                 iter_var       = 0
                 iter_var_check = 1
@@ -294,22 +298,76 @@ for line in lines_original:
                         iter_var = 1
                         temp_loop_iter['Type'] = var
                         break
+        
+        #Looking for (while) loops
+        if check_var('while', word):
+            loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
+            loop_ID_cnt    += 1
+            while_main_line = 1
+            temp_dict['ID']                          = loop_ID_cnt
+            temp_dict['Nested Level']                = len(nesting_loops)
+            if len(nesting_loops)>0:
+                temp_dict['Immediate_Outer_Loop_ID'] = nesting_loops[-1]
+            else:
+                temp_dict['Immediate_Outer_Loop_ID'] = 0
+            Immediate_Outer_Loop_ID = loop_ID_cnt
+            temp_dict['loop_iterator'] = {}
+            nested_level += 1
+            nesting_loops.append(loop_ID_cnt)
+
+        if while_main_line:
+            if ')' in word:
+                Loops_list_dict.append(temp_dict)
+                while_main_line = 0
+                scope_look = 1
+
+        #check immidiatley after a loop to see if '{' exists
+        if scope_look:
+            if ';' in word:
+                scope_look = 0
+                nesting_loops.pop()
+                nested_level -= 1
+            if '{' in word:
+                scope_look = 0
+                par_loop_dict[par_cnt] = loop_ID_cnt
+            
+        
+        #Checking the potential nestin points
+        if '{' in word:
+            par_cnt += 1
+        if '}' in word:
+            par_cnt -= 1
+            if par_cnt in par_loop_dict:
+                nesting_loops.pop()
+                par_loop_dict.pop(par_cnt)
+
+        #Here I assume that the function line is where an mathematical operation is occured        
+        if word_cnt in [0,1]:
+            if '=' in word:
+                assignment_check = 1
+                assignment_line = j
+        if assignment_check:
+            for op in functions_var:
+                if op in word:
+                    insertion_function.append(assignment_line) 
+        if ';' in word:
+            assignment_check = 0
+        word_cnt += 1  
 
 insertion_point['Loops'] = loops_lines
 
 #I don't know what exactly is VarSpecifier
-insertion_point['VarSpecifier'] = ''
-            
-            
+insertion_point['VarSpecifier'] = ''        
+insertion_point['Function'] = insertion_function            
         
 final_json_dict = dict({
-                       'File Name': filename.split(sep='.')[0][2:],
-                       'Function Name': function_name,
-                      # 'template_chars': json_args,
+                       'File Name'         : filename.split(sep='.')[0][2:],
+                       'Function Name'     : function_name,
+                      # 'template_chars'   : json_args,
                        'Notes': '',
                        "Function Variables": json_vars,
-                       'Loops' : Loops_list_dict,
-                       'insertion_point': insertion_point
+                       'Loops'             : Loops_list_dict,
+                       'insertion_point'   : insertion_point
                  })
 
 final_jason = json.dumps(final_json_dict, indent=4)

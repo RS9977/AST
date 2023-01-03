@@ -1,0 +1,2 @@
+59 release_ssa "SSA names released" "vecAdd" 24
+59 release_ssa "SSA name holes removed" "vecAdd" 24

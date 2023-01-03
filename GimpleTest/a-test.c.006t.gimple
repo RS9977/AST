@@ -1,0 +1,39 @@
+int main ()
+{
+  int D.2839;
+
+  {
+    int a;
+    int b;
+    int c;
+    int cnt;
+
+    a = 0;
+    b = 1;
+    c = a + b;
+    cnt = 3;
+    {
+      int i;
+
+      i = 0;
+      goto <D.2835>;
+      <D.2834>:
+      if (cnt <= 4) goto <D.2836>; else goto <D.2837>;
+      <D.2836>:
+      cnt = cnt + 1;
+      goto <D.2838>;
+      <D.2837>:
+      <D.2838>:
+      i = i + 1;
+      <D.2835>:
+      if (i <= 9) goto <D.2834>; else goto <D.2832>;
+      <D.2832>:
+    }
+    D.2839 = 1;
+    return D.2839;
+  }
+  D.2839 = 0;
+  return D.2839;
+}
+
+

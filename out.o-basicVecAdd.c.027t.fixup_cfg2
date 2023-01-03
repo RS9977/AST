@@ -3,6 +3,9 @@
 
 void vecAdd (size_t SIZE, int * A, int * B, int * C)
 {
+  size_t m;
+  size_t k;
+  size_t j;
   size_t i;
   long unsigned int _1;
   int * _2;
@@ -15,41 +18,45 @@ void vecAdd (size_t SIZE, int * A, int * B, int * C)
   int _9;
 
   <bb 2> :
-  i_12 = 0;
-  goto <bb 4>; [INV]
+  i_34 = 0;
+  goto <bb 5>; [INV]
 
   <bb 3> :
-  _1 = i_10 * 4;
-  _2 = A_15(D) + _1;
-  _3 = *_2;
-  _4 = i_10 * 4;
-  _5 = B_16(D) + _4;
-  _6 = *_5;
-  _7 = i_10 * 4;
-  _8 = C_17(D) + _7;
-  _9 = _3 + _6;
-  *_8 = _9;
-  i_19 = i_10 + 1;
+  j_37 = SIZE_35(D) + 18446744073709551615;
 
   <bb 4> :
-  # i_10 = PHI <i_12(2), i_19(3)>
-  if (i_10 < SIZE_14(D))
-    goto <bb 3>; [INV]
-  else
-    goto <bb 5>; [INV]
+  # j_32 = PHI <j_37(3), j_42(4)>
+  _1 = j_32 * 4;
+  _2 = A_38(D) + _1;
+  _3 = *_2;
+  _4 = i_34 * 4;
+  _5 = B_39(D) + _4;
+  _6 = *_5;
+  _7 = i_34 * 4;
+  _8 = C_40(D) + _7;
+  _9 = _3 + _6;
+  *_8 = _9;
+  j_42 = j_32 + 18446744073709551615;
+  goto <bb 4>; [INV]
 
   <bb 5> :
+  if (i_34 < SIZE_35(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
   return;
 
 }
 
 
 
-;; Function main (main, funcdef_no=16, decl_uid=3307, cgraph_uid=17, symbol_order=16)
+;; Function main (main, funcdef_no=16, decl_uid=3319, cgraph_uid=17, symbol_order=16)
 
 int main ()
 {
-  int D.3309;
+  int D.3321;
   int _1;
 
   <bb 2> :
