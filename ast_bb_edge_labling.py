@@ -39,7 +39,7 @@ except:
 # Reading the AST file
 lines = []
 try:
-    os.system('g++ ' + filename + ' -fdump-tree-all-graph ' + '-o out.o')
+    os.system('g++ ' + filename + ' -fdump-tree-ssa ' + '-o out.o')
     AST_filename = 'a-' + filename + '.023t.ssa' 
     f = open(AST_filename, 'r')
     for line in f:
