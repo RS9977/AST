@@ -276,10 +276,12 @@ for line in lines_original:
         #Looking for (for) loops   
         if check_var('for', word):
             loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
+            loop_ID_cnt += 1
         
         #Looking for (while) loops
         if check_var('while', word):
             loops_lines.append({'Loop ID': loop_ID_cnt, 'Line': j})
+            loop_ID_cnt += 1
 
         #Find function name        
         if check_var(function_name, word):
@@ -287,7 +289,7 @@ for line in lines_original:
         if function_name_check:
             if '{' in word:
                 function_name_check = 0
-                insertion_point['Function'] = j+1
+                insertion_point['Function'] = dict({'Line': j+1})
  
         word_cnt += 1  
 
@@ -302,13 +304,13 @@ json_args = dict({
 					})
 
 
-final_json_dict = dict({function_name: dict({
-                            'insertion_point'   : insertion_point['Global'],
+final_json_dict = dict({filename.split(sep='.')[0]: dict({
+                            'Insertion Points'  : dict({"Global": dict({"Line": insertion_point['Global']})}),
                             'template_chars'    : json_args,
                             'Functions'         : dict({ 
                                                     'kernel_' + function_name.split(sep='_')[0] : dict({
                                                                                                     "Function Variables": json_vars,
-                                                                                                    'insertion_point'   : dict({
+                                                                                                    'Insertion Points'   : dict({
                                                                                                                             'Loops'    : insertion_point['Loops'],
                                                                                                                             'Function' : insertion_point['Function']
                                                                                                     }),
