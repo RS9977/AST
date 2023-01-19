@@ -322,7 +322,7 @@ final_json_dict = dict({filename.split(sep='.')[0]: dict({
                  })
 
 final_jason = json.dumps(final_json_dict, indent=4)
-with open(function_name + '_features'+".json", "w") as outfile:
+with open('code'+".json", "w") as outfile:
     outfile.write(final_jason)
 
 
