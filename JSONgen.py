@@ -255,6 +255,7 @@ par_loop_dict = dict()
 insertion_function = []
 assignment_check = 0
 assignment_line  = 0
+function_name_check = 0
 #Parsing the Actual code line by line so that extractin features and corresponding lines
 for line in lines_original:
     temp_dict = dict()
@@ -266,7 +267,6 @@ for line in lines_original:
     iter_var            = 0
     iter_var_check      = 0
     word_cnt            = 0
-    function_name_check = 0
     for word in line.split():
         #Here I assume that the global line is the line which is the function is defined
         if function_name in word:
